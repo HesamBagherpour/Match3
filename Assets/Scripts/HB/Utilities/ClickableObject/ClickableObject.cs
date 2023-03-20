@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HB.Utilities.ClickableObject
 {
-    public class ClickableObject : MonoBehaviour
+    public sealed class ClickableObject : MonoBehaviour
     {
         public bool is3D = false;
         public string[] maskLayers = null;
@@ -11,13 +11,14 @@ namespace HB.Utilities.ClickableObject
         public event Action Pressed = null;
         public event Action Released = null;
         public event Action Clicked = null;
-        protected virtual void Awake()
+
+        private void Awake()
         {
             if (ClickableObjectSystem.Instance != null) 
                 ClickableObjectSystem.Instance.AddClickableObject(this);
         }
 
-        protected virtual void OnDestroy()
+        private void OnDestroy()
         {
             ClickableObjectSystem.Instance?.RemoveClickableObject(this);
         }
