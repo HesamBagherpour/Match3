@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6426b13c621a442189bb0523984c598a, type: 3}
+  m_Name: cannon-down
+  m_EditorClassIdentifier: 
+  restriction:
+    locks:
+    - actionType: -1
+      direction: -1
+    hitType: 0
+    health: 1
+    order: 0
+  sprite: {fileID: 21300000, guid: 8d0d179b07a55e454ad4537978eeab03, type: 3}
+  questSprite: {fileID: 0}
+  gameObject: {fileID: 1078519688495852306, guid: c3ffae678c717d049a91b36cc2b95175,
+    type: 3}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199d2a28cfc43b69a68d4f16ff88ecf, type: 3}
+  m_Name: box-purple
+  m_EditorClassIdentifier: 
+  blockType:
+    id: box
+    color: 4
+  restrictionType: 0
+  sprite: {fileID: 21300000, guid: fbe7ef10e9594da4a9cc8ac7636fc111, type: 3}
+  nestedBlockType: {fileID: 11400000, guid: 21a5a722abf9fe5478cefa41baaf9503, type: 2}

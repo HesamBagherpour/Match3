@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d199d2a28cfc43b69a68d4f16ff88ecf, type: 3}
+  m_Name: box-cyan
+  m_EditorClassIdentifier: 
+  blockType:
+    id: box
+    color: 3
+  restrictionType: 0
+  sprite: {fileID: 21300000, guid: ce8bdf7b475aecc428768a0e9dde78c4, type: 3}
+  nestedBlockType: {fileID: 11400000, guid: 6d73568df5b9a2041996b0b90ac8d723, type: 2}

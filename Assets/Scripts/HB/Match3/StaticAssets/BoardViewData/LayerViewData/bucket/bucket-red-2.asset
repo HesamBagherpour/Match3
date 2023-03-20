@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8811188944a4c412a8b02493a2bb180e, type: 3}
+  m_Name: bucket-red-2
+  m_EditorClassIdentifier: 
+  restriction:
+    locks:
+    - actionType: -1
+      direction: -1
+    hitType: -1
+    health: 2
+    order: 0
+  sprite: {fileID: -7268682903473330311, guid: b76acb9ebcf4881d9b7925c0ad3f57c3, type: 3}
+  questSprite: {fileID: -7268682903473330311, guid: b76acb9ebcf4881d9b7925c0ad3f57c3,
+    type: 3}
+  color: 1

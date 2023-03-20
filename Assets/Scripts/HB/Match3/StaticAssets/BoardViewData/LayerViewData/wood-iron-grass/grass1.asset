@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1582e0306e643879269c894c56589fe, type: 3}
+  m_Name: grass1
+  m_EditorClassIdentifier: 
+  restriction:
+    locks:
+    - actionType: 94
+      direction: -1
+    hitType: -1
+    health: 1
+    order: 100
+  sprite: {fileID: 21300000, guid: 8c4ae51f5205c594ea9fddc5064c9962, type: 3}
+  questSprite: {fileID: 21300000, guid: 3972a5d9290be114c8c2ac494d6db4be, type: 3}
