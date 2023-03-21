@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace HB.Utilities
+namespace HB.Packages.Utilities
 {
     public class CameraBlurCapture : MonoBehaviour
     {
-        private Camera camera;
-        public RenderTexture m_texture;
-        public Material m_material;
-        public Shader m_shader;
+        private Camera _camera;
+        [FormerlySerializedAs("m_texture")] public RenderTexture mTexture;
+        [FormerlySerializedAs("m_material")] public Material mMaterial;
+        [FormerlySerializedAs("m_shader")] public Shader mShader;
 
         void Start()
         {
-            camera = GetComponent<Camera>();
+            _camera = GetComponent<Camera>();
         }
         void Update()
         {
@@ -22,16 +23,16 @@ namespace HB.Utilities
         [ContextMenu("RenderManually")]
         public void RenderManually()
         {
-            camera.targetTexture = m_texture;
-            camera.Render();
-            camera.targetTexture = null;
-            Blur(m_texture, 1);
+            _camera.targetTexture = mTexture;
+            _camera.Render();
+            _camera.targetTexture = null;
+            Blur(mTexture, 1);
         }
 
         RenderTexture Blur(RenderTexture source, int iterations)
         {
             RenderTexture rt = source;
-            Material mat = new Material(m_shader);
+            Material mat = new Material(mShader);
             RenderTexture blit = RenderTexture.GetTemporary(1280, 720);
             for (int i = 0; i < iterations; i++)
             {
