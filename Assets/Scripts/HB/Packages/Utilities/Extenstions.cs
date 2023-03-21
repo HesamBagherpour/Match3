@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HB.Utilities
+namespace HB.Packages.Utilities
 {
     public static class Extenstions
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace HB.Utilities
+namespace HB.Packages.Utilities
 {
     public class ClickableObjectSystem : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace HB.Utilities
 
         public class ClickableHandleSystem
         {
-            protected readonly List<HB.Utilities.ClickableObject> clickableObjects = new List<HB.Utilities.ClickableObject>();
+            protected readonly List<ClickableObject> clickableObjects = new List<ClickableObject>();
             protected readonly List<int> masks = new List<int>();
             protected readonly Dictionary<int, int> masksObjectCount = new Dictionary<int, int>();
             protected Camera camera = null;

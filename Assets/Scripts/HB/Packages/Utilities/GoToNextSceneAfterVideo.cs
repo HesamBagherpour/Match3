@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
-namespace HB.Utilities
+namespace HB.Packages.Utilities
 {
     public class GoToNextSceneAfterVideo: MonoBehaviour
     {

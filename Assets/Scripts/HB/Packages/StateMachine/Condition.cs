@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HB.StateMachine
+namespace HB.Packages.StateMachine
 {
     public abstract class Condition
     {

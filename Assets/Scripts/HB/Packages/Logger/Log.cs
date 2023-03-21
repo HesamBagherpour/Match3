@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HB.Logger
+namespace HB.Packages.Logger
 {
     public abstract class Logger
     {

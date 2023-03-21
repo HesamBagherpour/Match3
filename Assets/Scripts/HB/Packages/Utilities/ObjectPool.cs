@@ -8,11 +8,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.Events;
-#if OBJECTPOOL_DEBUG
-using UnityEngine;
-#endif
 
-namespace HB.Utilities
+namespace HB.Packages.Utilities
 {
     /// <exclude />
     public class ObjectPool<T> where T : class

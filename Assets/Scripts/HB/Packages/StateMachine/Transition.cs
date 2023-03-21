@@ -1,4 +1,4 @@
-﻿namespace HB.StateMachine
+﻿namespace HB.Packages.StateMachine
 {
     public class Transition
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace HB.Utilities
+namespace HB.Packages.Utilities
 {
     public class ClickableObject : MonoBehaviour
     {

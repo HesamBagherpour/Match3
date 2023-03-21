@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using HB.Logger;
+using HB.Packages.Logger;
 
-namespace HB.StateMachine
+namespace HB.Packages.StateMachine
 {
     public class Fsm : State
     {
