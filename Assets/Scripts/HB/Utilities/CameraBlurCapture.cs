@@ -4,8 +4,7 @@ namespace HB.Utilities
 {
     public class CameraBlurCapture : MonoBehaviour
     {
-        private Camera camera = null;
-        public bool render = true;
+        private Camera camera;
         public RenderTexture m_texture;
         public Material m_material;
         public Shader m_shader;
