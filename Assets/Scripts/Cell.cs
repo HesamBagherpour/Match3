@@ -8,6 +8,8 @@ using HB.Match3.Cell;
 using HB.Match3.Modules;
 using HB.Packages.Logger;
 using UnityEngine;
+using HB.Match3.Models;
+using MatchType = HB.Match3.Models.MatchType;
 
 public class MyCell
 {
@@ -150,11 +152,11 @@ public class MyCell
             Contains<FlowerModule>() == false)
         {
             ParquetModule parquetModule = AddModule<ParquetModule>();
-            // HB
-            //parquetModule.Setup(ParquetModule.LayerName);
-            //parquetModule.InvokeQuestEvent();//HB
+         
+            parquetModule.Setup(ParquetModule.LayerName);
+            parquetModule.InvokeQuestEvent();
             View.AddModuleView(position, parquetModule);
-            //HB parquetModule.PlayEffect(position); //HB
+            parquetModule.PlayEffect(position);
         }
     }
 
@@ -165,12 +167,12 @@ public class MyCell
         IModule module = context.Register<T>();
         return (T)module;
     }
-//HB
-    // internal void RemoveMatchType()
-    // {
-    //     MatchType = MatchType.None;
-    // }
-//HB
+
+    internal void RemoveMatchType()
+    {
+        MatchType = MatchType.None;
+    }
+
     public T RemoveModule<T>() where T : class, IModule
     {
         T module = context.Remove<T>();
@@ -245,13 +247,13 @@ public class MyCell
     {
         MatchType |= type;
     }
-//HB
-    // public void ClearFlags()
-    // {
-    //     MatchType = MatchType.None;
-    //     HitType = HitType.None;
-    // }
-//HB
+
+    public void ClearFlags()
+    {
+        MatchType = MatchType.None;
+        HitType = HitType.None;
+    }
+
     public void ClearBooster(HitType hitType, int damage, Action<MyCell> onFinished)
     {
         if (HitType == HitType.None || damage == 0)
@@ -261,7 +263,7 @@ public class MyCell
 
         }
 
-        //HBBoosterModule booster = GetModule<BoosterModule>();//HB
+        BoosterModule booster = GetModule<BoosterModule>();//HB
         // if (booster == null || booster.IsActive)//HB
         // {
         //     onFinished?.Invoke(this);

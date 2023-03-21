@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using HB.Match3.Behaviours;
 using HB.Match3.Block;
 using HB.Match3.Cell;
 using HB.Match3.Modules;
@@ -88,7 +89,7 @@ namespace HB.Match3.Board
             _boardView = boardView;
             MatchInfos = new List<MatchInfo>();
             nestedBlockTypes = new Dictionary<BlockType, BlockType>();
-            Cells = new Cell[Width, Height];
+            Cells = new MyCell[Width, Height];
             LastValidSwap = new SwapData();
             InitialCells(data);
             SofaList = data.sofaList;
@@ -144,12 +145,12 @@ namespace HB.Match3.Board
             // }
             for (int i = 0; i < _initialBoosters.Count; i++)
             {
-                Cell cell = GetCellForInitialBooster(_initialBoosters[i]);
+                MyCell cell = GetCellForInitialBooster(_initialBoosters[i]);
                 if (cell != null) GetOrAddBoosterModule(cell, _initialBoosters[i]);
             }
         }
 
-        private Cell GetCellForInitialBooster(BoosterType boosterType)
+        private MyCell GetCellForInitialBooster(BoosterType boosterType)
         {
             if (boosterType == BoosterType.JumboBlock)
             {
@@ -169,7 +170,7 @@ namespace HB.Match3.Board
                 {
                     for (int y = 0; y < Height; y++)
                     {
-                        Cell cell = Cells[x, y];
+                        MyCell cell = Cells[x, y];
                         var blockModule = cell.GetModule<BlockModule>();
                         if (cell.IsVisible == false ||
                                cell.IsLocked(ActionType.Swap, Direction.All) ||
@@ -189,7 +190,7 @@ namespace HB.Match3.Board
                 {
                     for (int y = 0; y < Height; y++)
                     {
-                        Cell cell = Cells[x, y];
+                        MyCell cell = Cells[x, y];
                         var blockModule = cell.GetModule<BlockModule>();
                         if (cell.IsVisible == false ||
                                cell.IsLocked(ActionType.Swap, Direction.All) ||
@@ -215,7 +216,7 @@ namespace HB.Match3.Board
                 }
                 int rx = _random.Next(0, Width);
                 int ry = _random.Next(0, Height);
-                Cell cell = Cells[rx, ry];
+                MyCell cell = Cells[rx, ry];
                 while (cell.IsVisible == false ||
                        cell.IsLocked(ActionType.Swap, Direction.All) ||
                        cell.Contains<BlockModule>() == false ||
@@ -229,7 +230,7 @@ namespace HB.Match3.Board
             }
         }
 
-        public BoosterModule GetOrAddBoosterModule(Cell cell, BoosterType type)
+        public BoosterModule GetOrAddBoosterModule(MyCell cell, BoosterType type)
         {
             if (type == BoosterType.JumboBlock)
             {
@@ -360,7 +361,7 @@ namespace HB.Match3.Board
             }
         }
 
-        public void ExecuteFingerBooster(Cell cell, Action OnClear)
+        public void ExecuteFingerBooster(MyCell cell, Action OnClear)
         {
             if (cell.Contains<BucketModule>() || cell.Contains<CannonModule>() || cell.IsVisible == false) return;
             if (fingerBooster == BoosterType.Hammer)
@@ -372,7 +373,7 @@ namespace HB.Match3.Board
                 {
                     matchType = MatchType.Booster,
                     OriginCell = cell,
-                    MatchedCells = new List<Cell>() { cell }
+                    MatchedCells = new List<MyCell>() { cell }
                 });
 
                 _boardView.PlayEffect(cell.position, "hammer", () => { OnClear?.Invoke(); });
@@ -396,7 +397,7 @@ namespace HB.Match3.Board
                 {
                     matchType = MatchType.Booster,
                     OriginCell = cell,
-                    MatchedCells = new List<Cell>() { cell }
+                    MatchedCells = new List<MyCell>() { cell }
                 });
                 ClearBoosterUnderFinger();
                 OnFingerBoosterUsed?.Invoke();

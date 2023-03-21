@@ -5,67 +5,34 @@ namespace HB.Match3.Modules
 {
     public class ParquetModule : BaseModule
     {
-        protected override void OnSetup()
-        {
-            throw new NotImplementedException();
-        }
-
+        public const string LayerName = "parquet";
+        public const int Order = 1;
+        private ParquetModuleView parquetModuleView;
         public override void Clear(MyCell cell, ref int damage, HitType hitType, Action<BaseModule> onFinished)
         {
-            throw new NotImplementedException();
+            onFinished?.Invoke(null);
         }
-    }
-    public class CannonModule : RestrictionModule
-    {
-    }
-    public class CandleModule : BaseModule
-    {
-        protected override void OnSetup()
+        public override void SetView(IModuleView view)
         {
-            throw new NotImplementedException();
+            base.SetView(view);
+            if (view is ParquetModuleView parquetModuleView)
+            {
+                this.parquetModuleView = parquetModuleView;
+            }
         }
 
-        public override void Clear(MyCell cell, ref int damage, HitType hitType, Action<BaseModule> onFinished)
+        protected override void OnSetup()
         {
-            throw new NotImplementedException();
+            layerName = LayerName;
+            order = Order;
         }
+
+        public void PlayEffect(Point pos)
+        {
+            parquetModuleView.PlayEffect(pos);
+        }
+
+        internal void InvokeQuestEvent() => InvokeClearEvent(this);
     }
     
-    public class LockModule : BaseModule
-    {
-        protected override void OnSetup()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Clear(MyCell cell, ref int damage, HitType hitType, Action<BaseModule> onFinished)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    
-    public class BucketModule : BaseModule
-    {
-        protected override void OnSetup()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Clear(MyCell cell, ref int damage, HitType hitType, Action<BaseModule> onFinished)
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class FlowerModule : BaseModule
-    {
-        protected override void OnSetup()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Clear(MyCell cell, ref int damage, HitType hitType, Action<BaseModule> onFinished)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using System.Collections.Generic;
 using HB.Match3.Block;
-using HB.Match3.Board;
-using HB.Match3.Cell;
 using HB.Match3.Cell.Effect;
-using HB.Match3.Modules;
+using HB.Match3.Cell;
 using HB.Match3.View;
+using UnityEngine;
+using System;
+using DG.Tweening;
+using HB.Match3.Board;
 using HB.Match3.View.Quest;
 using HB.Packages.Logger;
-using UnityEngine;
 
-namespace Garage.Match3.View
+namespace HB.Match3.Modules
 {
     public class BlockModuleView : ObjectModuleView
     {
@@ -38,6 +37,7 @@ namespace Garage.Match3.View
                 BlockObjectLayer blockObjectLayer = (BlockObjectLayer)Layer;
                 blockObjectLayer.Sweep(_blockView.transform.position, targetPosition);
             }
+
             _blockView.MoveTo(targetPosition, onComplete);
         }
 
@@ -123,10 +123,8 @@ namespace Garage.Match3.View
             effect.transform.DOMove(targetPos, 0.2f).SetRelative(true).SetEase(Ease.OutQuart).OnComplete(() =>
             {
                 onFinished?.Invoke();
-                effect.transform.DOLocalMove(Vector3.zero, 0.2f).SetEase(Ease.OutQuart).OnComplete(() =>
-                    {
-                        Layer.ReleaseEffect(effect);
-                    }
+                effect.transform.DOLocalMove(Vector3.zero, 0.2f).SetEase(Ease.OutQuart).OnComplete(
+                    () => { Layer.ReleaseEffect(effect); }
                 );
             });
         }
@@ -193,36 +191,37 @@ namespace Garage.Match3.View
             //     }
             // }
 
-            
-            //HB 
-            // if (IgnoreQuestBySquareMatch == false && QuestGiver.IsInQuest(id))
+            if (IgnoreQuestBySquareMatch == false && QuestGiver.IsInQuest(id))
+            {
+                //HB
+                // var targetPos = Match3GameUi.QuestItemPosition(id);
+                // PlayCollectEffect(targetPos, _spriteRenderer.sprite);
+                //HB
+            }
+//HB
+            // if (_blockType.id == BlockIDs.Simple && IgnoreQuestBySquareMatch == false &&
+            //     QuestGiver.LockQuests.Count > 0)
             // {
-            //     var targetPos = Match3GameUi.QuestItemPosition(id);
-            //     PlayCollectEffect(targetPos, _spriteRenderer.sprite);
-            // }
-            //
-            // if (_blockType.id == BlockIDs.Simple && IgnoreQuestBySquareMatch == false && QuestGiver.LockQuests.Count > 0)
-            // {
-            //     foreach (var cell in QuestGiver.LockQuests)
-            //     {
-            //         var lockModule = cell.GetModule<LockQuestModule>();
-            //         if (lockModule.color == _blockType.color)
-            //         {
-            //             var targetPos = Layer.CellToWorld(cell.position);
-            //             PlayCollectEffect(targetPos, _spriteRenderer.sprite, () => lockModule.PlayCollectEffect());
-            //         }
-            //     }
-            // }
+            //     //HB
+            //     // foreach (var cell in QuestGiver.LockQuests)
+            //     // {
+            //     //     var lockModule = cell.GetModule<LockQuestModule>();
+            //     //     if (lockModule.color == _blockType.color)
+            //     //     {
+            //     //         var targetPos = Layer.CellToWorld(cell.position);
+            //     //         PlayCollectEffect(targetPos, _spriteRenderer.sprite, () => lockModule.PlayCollectEffect());
+            //     //     }
+            //     // }
+            //     //HB
+            // }//HB
 
-            //HB
             if (hasCoupon)
             {
-                
                 //HB
                 // var targetPos = Match3GameUi.QuestItemPosition("coupon");
                 // PlayCollectEffect(targetPos, _couponSprite);
-                //HB
             }
+
             SetCoupon(false);
 
             ReleaseJumboEffect();
@@ -241,6 +240,7 @@ namespace Garage.Match3.View
             {
                 BlockViewCleared();
             }
+
             IgnoreQuestBySquareMatch = false;
         }
 
@@ -291,6 +291,7 @@ namespace Garage.Match3.View
             jumboEffect = Layer.PlayEffect(_blockView.transform.position, "jumbo");
             jumboEffect.transform.SetParent(_blockView.transform, true);
         }
+
         public override void Dispose()
         {
             base.Dispose();
