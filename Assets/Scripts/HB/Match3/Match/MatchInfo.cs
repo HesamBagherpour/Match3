@@ -1,7 +1,7 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using HB.Match3.Models;
 
-namespace HB.Match3.Board.BoardStates
+namespace HB.Match3.Match
 {
     public class MatchInfo
     {

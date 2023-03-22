@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using HB.Match3.Match;
 using HB.Match3.Models;
 
 namespace HB.Match3.Board.BoardStates

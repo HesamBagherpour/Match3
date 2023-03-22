@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using HB.Match3.Behaviours;
 using HB.Match3.Block;
+using HB.Match3.Board;
+using HB.Match3.Board.BoardStates;
 using HB.Match3.Cell;
+using HB.Match3.Models;
 using HB.Match3.Modules;
 using HB.Match3.View;
 using HB.Match3.View.Quest;
-#if UNITY_EDITOR
-using UnityEngine;
-#endif
-using Random = System.Random;
-using HB.Packages.Timers;
 using HB.Packages.Logger;
 using HB.Packages.StateMachine;
-using UnityEngine.Networking.Match;
+using HB.Packages.Timers;
+using UnityEngine;
+using PossibleMatch = HB.Match3.Board.PossibleMatch;
+using Random = System.Random;
 
-namespace HB.Match3.Board
+namespace HB.Match3.Match3MainBoard
 {
     public class Board
     {
@@ -69,7 +69,7 @@ namespace HB.Match3.Board
 
         public int Height { get; }
 
-        public List<MatchInfo> MatchInfos { get; private set; }
+        public List<HB.Match3.Match.MatchInfo> MatchInfos { get; private set; }
         public PossibleMatch PossibleMatch { get; set; }
         public List<BoosterInfo> BoosterInfo { get; set; }
         public static Point Offset { get; private set; }
@@ -87,7 +87,7 @@ namespace HB.Match3.Board
             Width = data.width;
             Height = data.height;
             _boardView = boardView;
-            MatchInfos = new List<MatchInfo>();
+            MatchInfos = new List<HB.Match3.Match.MatchInfo>();
             nestedBlockTypes = new Dictionary<BlockType, BlockType>();
             Cells = new MyCell[Width, Height];
             LastValidSwap = new SwapData();
@@ -173,12 +173,12 @@ namespace HB.Match3.Board
                         MyCell cell = Cells[x, y];
                         var blockModule = cell.GetModule<BlockModule>();
                         if (cell.IsVisible == false ||
-                               cell.IsLocked(ActionType.Swap, Direction.All) ||
-                               blockModule == null ||
-                               blockModule.id == BlockIDs.Plant ||
-                               blockModule.IsJumbo == true ||
-                               QuestGiver.IsInQuest(blockModule) == false ||
-                               cell.Contains<BoosterModule>())
+                            cell.IsLocked(ActionType.Swap, Direction.All) ||
+                            blockModule == null ||
+                            blockModule.id == BlockIDs.Plant ||
+                            blockModule.IsJumbo == true ||
+                            QuestGiver.IsInQuest(blockModule) == false ||
+                            cell.Contains<BoosterModule>())
                         {
                             continue;
                         }
@@ -193,10 +193,10 @@ namespace HB.Match3.Board
                         MyCell cell = Cells[x, y];
                         var blockModule = cell.GetModule<BlockModule>();
                         if (cell.IsVisible == false ||
-                               cell.IsLocked(ActionType.Swap, Direction.All) ||
-                               blockModule == null ||
-                               blockModule.IsJumbo == true ||
-                               cell.Contains<BoosterModule>())
+                            cell.IsLocked(ActionType.Swap, Direction.All) ||
+                            blockModule == null ||
+                            blockModule.IsJumbo == true ||
+                            cell.Contains<BoosterModule>())
                         {
                             continue;
                         }
@@ -366,12 +366,12 @@ namespace HB.Match3.Board
             if (cell.Contains<BucketModule>() || cell.Contains<CannonModule>() || cell.IsVisible == false) return;
             if (fingerBooster == BoosterType.Hammer)
             {
-                cell.AddMatchType(MatchType.Booster);
+                cell.AddMatchType(HB.Match3.Models.MatchType.Booster);
                 cell.Hit(HitType.Direct, 1);
                 MatchState.IgnoreAdjacent = true;
-                MatchInfos.Add(new MatchInfo()
+                MatchInfos.Add(new HB.Match3.Match.MatchInfo()
                 {
-                    matchType = MatchType.Booster,
+                    matchType = HB.Match3.Models.MatchType.Booster,
                     OriginCell = cell,
                     MatchedCells = new List<MyCell>() { cell }
                 });
@@ -390,12 +390,12 @@ namespace HB.Match3.Board
                     SwapState.PassedWithRainbowPowerUp = true;
                 }
                 GetOrAddBoosterModule(cell, fingerBooster);
-                cell.AddMatchType(MatchType.Booster);
+                cell.AddMatchType(HB.Match3.Models.MatchType.Booster);
                 cell.Hit(HitType.Direct, 1);
                 cell.ClearBooster(HitType.Direct, 1, null);
-                MatchInfos.Add(new MatchInfo()
+                MatchInfos.Add(new HB.Match3.Match.MatchInfo()
                 {
-                    matchType = MatchType.Booster,
+                    matchType = HB.Match3.Models.MatchType.Booster,
                     OriginCell = cell,
                     MatchedCells = new List<MyCell>() { cell }
                 });
@@ -469,77 +469,77 @@ namespace HB.Match3.Board
 
         private void SetupFsm()
         {
-            IfMatchFound ifFoundMatch = new IfMatchFound(this, _matchPredictor);
-            IfBoosterHit ifBoosterHit = new IfBoosterHit();
-            IfPostClearNeedNewClear ifPostClearNeedNewClear = new IfPostClearNeedNewClear();
+            // IfMatchFound ifFoundMatch = new IfMatchFound(this, _matchPredictor);
+            // IfBoosterHit ifBoosterHit = new IfBoosterHit();
+            // IfPostClearNeedNewClear ifPostClearNeedNewClear = new IfPostClearNeedNewClear();
+            //
+            // InitState init = new InitState { Name = "Board:Init" };
+            // CreateState create = new CreateState(_createBehaviour, _boardView) { Name = "Board:Create" };
+            // CannonFireState cannonState = new CannonFireState() { Name = "Board:Cannon" };
+            // SwapState swap = new SwapState(_swapBehaviour, _boardView) { Name = "Board:Swap" };
+            // MatchState match = new MatchState(_matchBehaviour, _boardView) { Name = "Board:Match" };
+            //
+            // DetectBoosterState detectBooster = new DetectBoosterState(_boardView) { Name = "Board:Detect Booster" };
+            // HitBoosterState hitBooster = new HitBoosterState() { Name = "Board:Hit Boosters" };
+            // AddBoosterState addBooster = new AddBoosterState(_boardView, _blockFactory) { Name = "Board:Add New Boosters" };
+            //
+            // DetectJumboState detectJumbo = new DetectJumboState() { Name = "Board:Detect Jumbo" };
+            // // HitJumboState hitJumbo = new HitJumboState() { Name = "Board: Hit Jumbo" };
+            // AddJumboState addJumbo = new AddJumboState(_blockFactory, detectJumbo) { Name = "Board:Add Jumbo" };
+            // // ClearJumboState /
+            // MergeCells merge = new MergeCells() { Name = "Board:Merge" };
+            // ClearState clear = new ClearState(_boardView, _blockFactory) { Name = "Board:Clear" };
+            // PostClearState postClear = new PostClearState(_boardView, _blockFactory) { Name = "Board:Post Clear" };
+            // // ActiveJumboState activateJumbo = new ActiveJumboState(_blockFactory, _boardView) { Name = "Board:Activate Jumbo" };
+            // ClearSofas clearSofas = new ClearSofas() { Name = "Board:ClearSofa" };
+            // CandleState candleState = new CandleState() { Name = "Board:Candle State" };
+            // LockState lockState = new LockState() { Name = "Board:Lock State" };
+            // ActiveBucketsState activeBuckets = new ActiveBucketsState(_boardView, _blockFactory, _random) { Name = "Board:Active Buckets" };
+            // ClearIronWalls clearIronWalls = new ClearIronWalls() { Name = "Board:ClearIronWalls" };
+            // ClearFlagsState clearFlags = new ClearFlagsState() { Name = "Board:Clear Flags" };
+            // ReshuffleState reshuffle = new ReshuffleState(_matchPredictor, _random) { Name = "Board:Reshuffle" };
+            // FallState fall = new FallState(_fallBehaviour) { Name = "Board:Fall" };
+            // MeterState meter = new MeterState(_blockFactory, _random, _boardView) { Name = "Board:Meter" };
+            // FlowerState flower = new FlowerState(_blockFactory, _random, _boardView) { Name = "Board:Flower" };
+            //
+            //
+            //
+            // // JumboExplodedCondition jumboExplodedCondition = new JumboExplodedCondition(this);
+            //
+            // Transition.CreateAndAssign(init, create);
+            // Transition.CreateAndAssign(create, match, cannonState, ifFoundMatch);
+            // Transition.CreateAndAssign(cannonState, swap);
+            // Transition.CreateAndAssign(swap, match);
+            //
+            // Transition.CreateAndAssign(match, detectBooster);
+            //
+            // Transition.CreateAndAssign(detectBooster, detectJumbo);
+            // Transition.CreateAndAssign(detectJumbo, merge);
+            //
+            // Transition.CreateAndAssign(merge, flower);
+            // Transition.CreateAndAssign(flower, clear);
+            //
+            // //Transition.CreateAndAssign(merge, clear);
+            //
+            // Transition.CreateAndAssign(clear, lockState);
+            // Transition.CreateAndAssign(lockState, postClear);
+            // Transition.CreateAndAssign(postClear, flower, hitBooster, ifPostClearNeedNewClear);
+            // Transition.CreateAndAssign(hitBooster, flower, addBooster, ifBoosterHit);
+            // Transition.CreateAndAssign(addBooster, addJumbo);
+            //
+            //
+            // Transition.CreateAndAssign(addJumbo, clearSofas);
+            // Transition.CreateAndAssign(clearSofas, activeBuckets);
+            // Transition.CreateAndAssign(activeBuckets, clearIronWalls);
+            // Transition.CreateAndAssign(clearIronWalls, candleState);
+            // Transition.CreateAndAssign(candleState, clearFlags);
+            // Transition.CreateAndAssign(clearFlags, fall);
+            //
+            // Transition.CreateAndAssign(fall, match, meter, ifFoundMatch);
+            // Transition.CreateAndAssign(meter, reshuffle);
+            // Transition.CreateAndAssign(reshuffle, match, cannonState, ifFoundMatch);
 
-            InitState init = new InitState { Name = "Board:Init" };
-            CreateState create = new CreateState(_createBehaviour, _boardView) { Name = "Board:Create" };
-            CannonFireState cannonState = new CannonFireState() { Name = "Board:Cannon" };
-            SwapState swap = new SwapState(_swapBehaviour, _boardView) { Name = "Board:Swap" };
-            MatchState match = new MatchState(_matchBehaviour, _boardView) { Name = "Board:Match" };
-
-            DetectBoosterState detectBooster = new DetectBoosterState(_boardView) { Name = "Board:Detect Booster" };
-            HitBoosterState hitBooster = new HitBoosterState() { Name = "Board:Hit Boosters" };
-            AddBoosterState addBooster = new AddBoosterState(_boardView, _blockFactory) { Name = "Board:Add New Boosters" };
-
-            DetectJumboState detectJumbo = new DetectJumboState() { Name = "Board:Detect Jumbo" };
-            // HitJumboState hitJumbo = new HitJumboState() { Name = "Board: Hit Jumbo" };
-            AddJumboState addJumbo = new AddJumboState(_blockFactory, detectJumbo) { Name = "Board:Add Jumbo" };
-            // ClearJumboState /
-            MergeCells merge = new MergeCells() { Name = "Board:Merge" };
-            ClearState clear = new ClearState(_boardView, _blockFactory) { Name = "Board:Clear" };
-            PostClearState postClear = new PostClearState(_boardView, _blockFactory) { Name = "Board:Post Clear" };
-            // ActiveJumboState activateJumbo = new ActiveJumboState(_blockFactory, _boardView) { Name = "Board:Activate Jumbo" };
-            ClearSofas clearSofas = new ClearSofas() { Name = "Board:ClearSofa" };
-            CandleState candleState = new CandleState() { Name = "Board:Candle State" };
-            LockState lockState = new LockState() { Name = "Board:Lock State" };
-            ActiveBucketsState activeBuckets = new ActiveBucketsState(_boardView, _blockFactory, _random) { Name = "Board:Active Buckets" };
-            ClearIronWalls clearIronWalls = new ClearIronWalls() { Name = "Board:ClearIronWalls" };
-            ClearFlagsState clearFlags = new ClearFlagsState() { Name = "Board:Clear Flags" };
-            ReshuffleState reshuffle = new ReshuffleState(_matchPredictor, _random) { Name = "Board:Reshuffle" };
-            FallState fall = new FallState(_fallBehaviour) { Name = "Board:Fall" };
-            MeterState meter = new MeterState(_blockFactory, _random, _boardView) { Name = "Board:Meter" };
-            FlowerState flower = new FlowerState(_blockFactory, _random, _boardView) { Name = "Board:Flower" };
-
-
-
-            // JumboExplodedCondition jumboExplodedCondition = new JumboExplodedCondition(this);
-
-            Transition.CreateAndAssign(init, create);
-            Transition.CreateAndAssign(create, match, cannonState, ifFoundMatch);
-            Transition.CreateAndAssign(cannonState, swap);
-            Transition.CreateAndAssign(swap, match);
-
-            Transition.CreateAndAssign(match, detectBooster);
-
-            Transition.CreateAndAssign(detectBooster, detectJumbo);
-            Transition.CreateAndAssign(detectJumbo, merge);
-
-            Transition.CreateAndAssign(merge, flower);
-            Transition.CreateAndAssign(flower, clear);
-
-            //Transition.CreateAndAssign(merge, clear);
-
-            Transition.CreateAndAssign(clear, lockState);
-            Transition.CreateAndAssign(lockState, postClear);
-            Transition.CreateAndAssign(postClear, flower, hitBooster, ifPostClearNeedNewClear);
-            Transition.CreateAndAssign(hitBooster, flower, addBooster, ifBoosterHit);
-            Transition.CreateAndAssign(addBooster, addJumbo);
-
-
-            Transition.CreateAndAssign(addJumbo, clearSofas);
-            Transition.CreateAndAssign(clearSofas, activeBuckets);
-            Transition.CreateAndAssign(activeBuckets, clearIronWalls);
-            Transition.CreateAndAssign(clearIronWalls, candleState);
-            Transition.CreateAndAssign(candleState, clearFlags);
-            Transition.CreateAndAssign(clearFlags, fall);
-
-            Transition.CreateAndAssign(fall, match, meter, ifFoundMatch);
-            Transition.CreateAndAssign(meter, reshuffle);
-            Transition.CreateAndAssign(reshuffle, match, cannonState, ifFoundMatch);
-
-            _fsm = new Fsm<Board>(this, init, true);
+            //_fsm = new Fsm<Board>(this, init, true);
         }
 
         public void CacheInitialBoosters(List<BoosterType> boosterTypes)

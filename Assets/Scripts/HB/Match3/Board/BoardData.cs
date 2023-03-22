@@ -6,6 +6,7 @@ using System.Xml;
 using HB.Core.DI;
 using HB.Match3.Block;
 using HB.Match3.Cell;
+using HB.Match3.Models;
 using HB.Match3.Modules;
 using HB.Match3.View;
 
@@ -30,8 +31,8 @@ namespace HB.Match3.Board
         public int height;
         public int width;
         public Vector2Int boardOffset;
-        //HBpublic PuzzleQuestData questData;
-        //HB[NonSerialized] public List<SofaModule> sofaList;
+        public PuzzleQuestData questData;
+        [NonSerialized] public List<SofaModule> sofaList;
         [NonSerialized] public MyCell[] cells;
         [HideInInspector] public byte[] cellsData;
         [HideInInspector] public string cellDataJson;
@@ -124,7 +125,7 @@ namespace HB.Match3.Board
 
             
             if (sofaData == null || sofaData.Length == 0) return;
-            //HBsofaList = null;
+                sofaList = null;
             //HB
             // if(!withMessagePack)
             //     //sofaList = JsonConvert.DeserializeObject<SofaModule[]>(sofaDataJson, new BaseModuleJsonConverter()).ToList();

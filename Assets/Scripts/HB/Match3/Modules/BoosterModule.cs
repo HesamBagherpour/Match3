@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HB.Match3.Board;
+using HB.Match3.Board.BoardStates;
+using HB.Match3.Booster;
+using HB.Match3.Booster.MainBooster;
 using HB.Match3.Cell;
+using HB.Match3.Models;
 using UnityEngine;
 
 namespace HB.Match3.Modules
@@ -14,8 +19,8 @@ namespace HB.Match3.Modules
          public bool IsActive { get; internal set; }
 
         private BoosterModuleView _boosterView;
-        private Booster _boosterBehaviour;
-        private Board _board;
+        private Booster.MainBooster.Booster _boosterBehaviour;
+        private Match3MainBoard.Board _board;
         public BoosterModule()
         {
             layerName = LayerName;
@@ -23,7 +28,7 @@ namespace HB.Match3.Modules
             id = layerName;
         }
 
-        public void SetBoard(Board board)
+        public void SetBoard(Match3MainBoard.Board board)
         {
             _board = board;
         }
@@ -102,7 +107,7 @@ namespace HB.Match3.Modules
         {
         }
 
-        public override void Clear(Cell cell, ref int damage, HitType hitType, Action<BaseModule> onFinished)
+        public override void Clear(MyCell cell, ref int damage, HitType hitType, Action<BaseModule> onFinished)
         {
             if (damage == 0)
             {
@@ -143,18 +148,5 @@ namespace HB.Match3.Modules
             });
             IsActive = true;
         }
-    }
-
-    public enum BoosterType
-    {
-        None,
-        Horizontal,
-        Vertical,
-        Square,
-        Cross,
-        Rainbow,
-        Explosion,
-        Hammer,
-        JumboBlock,
     }
 }

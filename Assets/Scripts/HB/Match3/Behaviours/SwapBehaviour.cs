@@ -8,7 +8,7 @@ namespace HB.Match3.Behaviours
     {
         #region Private Fields
 
-        private readonly Board.Board _board;
+        private Match3MainBoard.Board _board;
         private readonly MatchPredictor _predictor;
         private const Direction ValidDirection = Direction.Left | Direction.Right | Direction.Top | Direction.Bottom;
 
@@ -17,11 +17,11 @@ namespace HB.Match3.Behaviours
         #region  Constructors
 
         //HB
-        // public SwapBehaviour(Board board, MatchPredictor predictor)
-        // {
-        //     _board = board;
-        //     _predictor = predictor;
-        // }
+        public SwapBehaviour(Match3MainBoard.Board board, MatchPredictor predictor)
+        {
+            _board = board;
+            _predictor = predictor;
+        }
 
         //HB
         #endregion

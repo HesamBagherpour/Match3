@@ -12,17 +12,17 @@ namespace HB.Match3.Behaviours
     {
        #region Private Fields
 
-        private readonly Board.Board _board;
+        public Match3MainBoard.Board _board;
 
         #endregion
 
         #region  Constructors
 
         //HB
-        // public MatchBehaviour(Board board)
-        // {
-        //     _board = board;
-        // }
+        public MatchBehaviour(Match3MainBoard.Board board)
+        {
+            _board = board;
+        }
 
         #endregion
 

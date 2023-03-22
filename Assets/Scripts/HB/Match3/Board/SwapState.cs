@@ -66,7 +66,7 @@ namespace HB.Match3.Board
 
         private void SuggestSwap()
         {
-            if (discardSuggest == false && Board.IsActive && _boardView.HasTutorial == false)
+            if (discardSuggest == false && global::HB.Match3.Match3MainBoard.Board.IsActive && _boardView.HasTutorial == false)
             {
                 PossibleMatch possibleMatch = Agent.PossibleMatch;
                 if (possibleMatch != null)

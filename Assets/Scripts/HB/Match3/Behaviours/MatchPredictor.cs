@@ -8,21 +8,21 @@ namespace HB.Match3.Behaviours
 {
     public class MatchPredictor
     {
-              #region Private Fields
+        #region Private Fields
 
-        private readonly Board.Board _board;
+        private Match3MainBoard.Board _board;
         private List<MyCell> _otherCellsInPossibleMatch;
         #endregion
 
         #region  Constructors
 
-        //HB
-        // public MatchPredictor(Board board)
-        // {
-        //     _board = board;
-        //     _otherCellsInPossibleMatch = new List<MyCell>();
-        // }
-        //HB
+     
+        public MatchPredictor(Match3MainBoard.Board board)
+        {
+            _board = board;
+            _otherCellsInPossibleMatch = new List<MyCell>();
+        }
+   
 
         #endregion
 
