@@ -320,6 +320,7 @@ RectTransform:
   - {fileID: 621619903}
   - {fileID: 83339851}
   - {fileID: 1258247365}
+  - {fileID: 2098761220}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -743,3 +744,149 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2098761219
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 231549124}
+    m_Modifications:
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051876424648176645, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+      propertyPath: m_Name
+      value: Match3 Game
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1138729266100383706, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+--- !u!224 &2098761220 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2916102111347387016, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+  m_PrefabInstance: {fileID: 2098761219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2098761221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6051876424648176645, guid: 387e5181980d55c4da8e9400e1684668, type: 3}
+  m_PrefabInstance: {fileID: 2098761219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2098761222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098761221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4a3ce3f82b45dba9eafe35bb408378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openUiTransition: {fileID: 0}
+  closeUiTransition: {fileID: 0}
+  modalWindows: []
+  widgets: []
+  _uiQuestItemPrefab: {fileID: 7416493704435668259, guid: 2a7e0c9ac48ed734bb559c8ce9b3c172, type: 3}
+  _questParent: {fileID: 0}
+  _powerUpsParent: {fileID: 0}
+  _powerUpParentHeader: {fileID: 0}
+  _powerUpButtons: []
+  _coupons: {fileID: 0}
+  _header: {fileID: 0}
+  _normalLevelHeader: {fileID: 0}
+  _hardLevelHeader: {fileID: 0}
+  _luxuryLevelHeader: {fileID: 0}
+  _Bg: {fileID: 0}
+  _normalLevelBg: {fileID: 0}
+  _hardLevelBg: {fileID: 0}
+  _luxuryLevelBg: {fileID: 0}
+  _pauseButton: {fileID: 0}
+  _winGame: {fileID: 0}
+  _loseGame: {fileID: 0}
+  _remainingMoves: {fileID: 0}
+  _totalCoupons: {fileID: 0}
+  _levelNo: {fileID: 0}
+  _addMovesEffect: {fileID: 0}
+  _powerUpTutorialGroups: []
