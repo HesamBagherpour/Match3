@@ -303,8 +303,11 @@ namespace HB.Packages.GUI
 
         public void AddMoves(int extraMoves)
         {
-            _remainingMoves.text = extraMoves.ToString();
-            _addMovesEffect.Play(null);
+            //HB
+            //_remainingMoves.text = extraMoves.ToString();
+            //_addMovesEffect.Play(null);
+            
+            //HB
         }
     }
 }

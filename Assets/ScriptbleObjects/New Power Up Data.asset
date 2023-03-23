@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7952a00733442c96d418c8a5d2b7e0, type: 3}
+  m_Name: New Power Up Data
+  m_EditorClassIdentifier: 
+  CurrencyName: 5
+  BoosterType: 4
+  Situation: 0
+  PowerUpImage: {fileID: 21300000, guid: c5a167290ba64194ea7c7cb94b1b2f46, type: 3}
+  ShowName: "\u0627\u0646\u0641\u062C\u0627\u0631\u06CC"
+  Description: "\u0627\u0646\u0641\u062C\u0627\u0631\u06CC \u062A\u0645\u0627\u0645
+    \u062E\u0648\u0646\u0647 \u0647\u0627\u06CC \u0639\u0645\u0648\u062F\u06CC \u0648
+    \u0627\u0641\u0642\u06CC \u062E\u0648\u062F\u0634 \u0631\u0648 \u0627\u0632 \u0628\u06CC\u0646
+    \u0645\u06CC \u0628\u0631\u0647."
+  PriceByGem: 50
+  NumberOfPacks: 1
+  ItemsInPack: 1
+  PowerUpBoughtAdjustEvent: uk3241
+  PowerUpUsedAdjustEvent: i4dbwr

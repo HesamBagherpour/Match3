@@ -80,13 +80,11 @@ namespace HB.Packages.Utilities
                 if (Input.GetMouseButtonDown(0))
                 {
                     List<ClickableObject> objList = GetHitObjects();
-                    Debug.Log("111111111111111111111111111111111111111111111111" + objList.Count);
                     for (int i = 0; i < objList.Count; i++)
                         objList[i].CallMousePress();
                 }
                 else if (Input.GetMouseButtonUp(0))
                 {
-                    Debug.Log("222222222222222222222222222222222222222222222222222");
                     List<ClickableObject> objList = GetHitObjects();
                     for (int i = 0; i < objList.Count; i++)
                         objList[i].CallMouseRelease();
