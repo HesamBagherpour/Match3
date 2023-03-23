@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6691340592983031320, guid: dee5ee97c1730cd4191549666dcc0f2a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6691340592983031320, guid: dee5ee97c1730cd4191549666dcc0f2a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -318,8 +318,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2916102113144087691}
-  - {fileID: 621619903}
   - {fileID: 83339851}
+  - {fileID: 621619903}
   - {fileID: 8375957077790130801}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -480,7 +480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6291859339106056522, guid: 9ab576b1b7719b443a14bf6238204e0f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6291859339106056522, guid: 9ab576b1b7719b443a14bf6238204e0f, type: 3}
       propertyPath: m_AnchorMax.x
