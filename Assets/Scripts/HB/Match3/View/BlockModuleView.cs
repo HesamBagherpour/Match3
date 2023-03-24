@@ -150,7 +150,7 @@ namespace Garage.Match3.View
         {
             _blockType = ((BlockModule)module).blockType;
             LayerName = module.layerName;
-            if (_blockTypeToSprite == null) _blockTypeToSprite = blockViewData.ToDictionary();
+           // if (_blockTypeToSprite == null) _blockTypeToSprite = blockViewData.ToDictionary();
         }
 
         public override void Clear(Action onFinished)

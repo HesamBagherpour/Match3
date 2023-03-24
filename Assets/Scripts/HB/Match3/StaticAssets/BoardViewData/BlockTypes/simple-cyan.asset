@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897e79229e2a1e189b7c594a81300257, type: 3}
+  m_Name: simple-cyan
+  m_EditorClassIdentifier: 
+  restriction:
+    locks: []
+    hitType: 0
+    health: 1
+    order: 0
+  sprite: {fileID: 21300000, guid: 7e6b342c56221fe44abacf5d54fdd5b8, type: 3}
+  questSprite: {fileID: 21300000, guid: 7e6b342c56221fe44abacf5d54fdd5b8, type: 3}
+  blockViewData: {fileID: 11400000, guid: e5b87636dd88204438dfb290fdf193f6, type: 2}
